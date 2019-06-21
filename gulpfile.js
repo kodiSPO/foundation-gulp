@@ -36,7 +36,7 @@ gulp.task('css', function () {
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(concat('theme.min.css'))
     .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+            overrideBrowserslist: ['last 2 versions'],
             cascade: false
         }))
     .pipe(cssnano())
