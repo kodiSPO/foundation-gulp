@@ -1,0 +1,4 @@
+/*
+** initialize foundation
+*/
+$(document).foundation();
