@@ -119,6 +119,12 @@ img.lazy-loaded {
 /* -------------------------------
 	forms
 ------------------------------- */
+::-webkit-input-placeholder { color: #6e6e6e; }
+::-moz-placeholder {          color: #6e6e6e; }
+::-o-placeholder {            color: #6e6e6e; }
+:-ms-input-placeholder {      color: #6e6e6e; }
+input:-moz-placeholder {      color: #6e6e6e; }
+
 .gform_wrapper {
 	margin: 0;
 }
