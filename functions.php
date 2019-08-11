@@ -239,12 +239,82 @@ add_filter( 'gform_confirmation_anchor', '__return_false' );
 
 
 
+/* add custom editor blocks category */
+if (!function_exists('project_block_category')) {
+	function project_block_category($categories, $post) {
+		return array_merge(
+			array(
+				array(
+					'slug'  => 'project_blocks',
+					'title' => 'Project blocks',
+				),
+			),
+			$categories
+		);
+	}
+	add_filter( 'block_categories', 'project_block_category', 10, 2 );
+}
+
+
+/* register custom blocks */
+if( function_exists('acf_register_block_type') ) {
+	function register_acf_block_types() {
+
+		acf_register_block_type(array(
+			'name'            => 'project_hero',
+			'title'           => __('Project Hero'),
+			'render_template' => 'parts/project_hero.php',
+			'category'        => 'project_blocks',
+			'icon'            => 'admin-comments',
+			'mode'            => 'edit',
+		));
+
+	}
+	add_action('acf/init', 'register_acf_block_types');
+}
 
 
 
 
+/*
+** customize login screen
+*/
+function wordpress_login_styling() {
+	?>
+	<style type="text/css">
+		.login {
+			background-color: #fff;
+		}
 
+		.login #login h1 a {
+			background-image: url('<?php //the_field('opt_colored_logo', 'option'); ?>');
+			background-position: center;
+			background-size: auto 100%;
+			background-repeat: no-repeat;
+			width: auto;
+			height: 52px;
+		}
 
+		body.login #backtoblog a,
+		body.login #nav a {
+			color: #fff;
+		}
+
+		.login.login-password-protected {
+			background-color: #f1f1f1;
+		}
+
+		.login.login-password-protected #login h1 a {
+			background-image: url('<?php echo get_stylesheet_directory_uri() . '/images/rt-logo.png'; ?>');
+			background-position: center;
+			background-size: auto 100%;
+			background-repeat: no-repeat;
+			width: auto;
+			height: 30px;
+		}
+	</style>
+<?php }
+// add_action( 'login_enqueue_scripts', 'wordpress_login_styling' );
 
 
 
