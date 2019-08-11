@@ -112,7 +112,14 @@ img.lazy-loaded {
 /* -------------------------------
 	additional classes
 ------------------------------- */
-
+.fullwidth {
+	position: relative;
+	width: 100vw;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+}
 
 
 
@@ -215,6 +222,9 @@ textarea {
 /* -------------------------------
 	buttons
 ------------------------------- */
+li.menu-item-btn > a,
+.wp-block-button__link,
+.gform_button,
 .btn {
 
 	&:hover {
@@ -232,7 +242,20 @@ textarea {
 
 
 
+/* -------------------------------
+	animation
+------------------------------- */
+// .anim-fade {
+// 	position: relative;
+// 	@include transition;
+// 	opacity: 0;
+// 	top: 30px;
 
+// 	&.animated {
+// 		opacity: 1;
+// 		top: 0;
+// 	}
+// }
 
 
 
