@@ -261,12 +261,16 @@ if( function_exists('acf_register_block_type') ) {
 	function register_acf_block_types() {
 
 		acf_register_block_type(array(
-			'name'            => 'project_hero',
-			'title'           => __('Project Hero'),
-			'render_template' => 'parts/project_hero.php',
+			'name'            => 'home_hero',
+			'title'           => __('Home Hero'),
+			'render_template' => 'parts/home_hero.php',
 			'category'        => 'project_blocks',
-			'icon'            => 'admin-comments',
 			'mode'            => 'edit',
+			'icon'            => array(
+				'src'        => 'admin-appearance',
+				'foreground' => '#ffffff',
+				'background' => '#880b57',
+			),
 		));
 
 	}
