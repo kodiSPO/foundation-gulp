@@ -121,6 +121,10 @@ img.lazy-loaded {
 	margin-right: -50vw;
 }
 
+.last-margin > *:last-child {
+	margin-bottom: 0;
+}
+
 
 
 /* -------------------------------
