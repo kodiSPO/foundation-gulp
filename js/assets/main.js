@@ -20,7 +20,7 @@
 
 // 	$.ajax({
 // 		type : 'POST',
-// 		url  : "/wp-admin/admin-ajax.php",
+// 		url  : document.location.origin + "/wp-admin/admin-ajax.php",
 // 		data : {
 // 			'action'        : 'load_more_vacancies',
 // 			'paged'         : paged,
