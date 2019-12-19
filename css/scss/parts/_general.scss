@@ -95,7 +95,7 @@ li {
 }
 
 a {
-	
+	@include transition;
 
 	&:hover {
 		
