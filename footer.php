@@ -19,6 +19,8 @@
 							<?php //endwhile; ?>
 <!-- 						</ul> -->
 					<?php //endif; ?>
+					
+					<?php //wp_nav_menu(array('theme_location' => 'footer-nav')); ?>
 				</div>
 			</div>
 		</div>
