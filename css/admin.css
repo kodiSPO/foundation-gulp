@@ -1,0 +1,14 @@
+.acf-field.block-label {
+	background-color: #eee;
+}
+
+.acf-field.block-label .acf-label {
+	margin-bottom: 0;
+}
+
+.acf-field.block-label .acf-label label {
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 0;
+}
