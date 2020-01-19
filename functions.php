@@ -81,6 +81,15 @@ function theme_styles_scripts() {
 add_action('wp_enqueue_scripts', 'theme_styles_scripts');
 
 
+// enqueue admin scripts and styles
+function admin_theme_styles_scripts() {
+	$theme_uri = get_template_directory_uri();
+	$version   = '1.0.0';
+	wp_enqueue_style('admin-css', $theme_uri .'/css/admin.css', array(), $version);
+}
+add_action( 'admin_enqueue_scripts', 'admin_theme_styles_scripts' );
+
+
 // custom Walker
 class Foundation_6_Walker extends Walker_Nav_Menu {
 	/*
