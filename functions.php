@@ -115,6 +115,67 @@ register_nav_menus(array(
 ));
 
 
+// options page
+if (function_exists('acf_add_options_page')) {
+	acf_add_options_page();
+}
+
+
+// GF: add support to hide field labels
+add_filter('gform_enable_field_label_visibility_settings', '__return_true');
+// GF: Disable Automatic Scrolling On All Forms
+add_filter( 'gform_confirmation_anchor', '__return_false' );
+
+
+/*
+** customize login screen
+*/
+function wordpress_login_styling() {
+	?>
+	<style type="text/css">
+		.login {
+			background-color: #fff;
+		}
+
+		.login #login h1 a {
+			background-image: url('<?php //the_field('opt_colored_logo', 'option'); ?>');
+			background-position: center;
+			background-size: auto 100%;
+			background-repeat: no-repeat;
+			width: auto;
+			height: 52px;
+		}
+
+		body.login #backtoblog a,
+		body.login #nav a {
+			color: #fff;
+		}
+
+		.login.login-password-protected {
+			background-color: #f1f1f1;
+		}
+
+		.login.login-password-protected #login h1 a {
+			background-image: url('<?php echo get_stylesheet_directory_uri() . '/images/rt-logo.png'; ?>');
+			background-position: center;
+			background-size: auto 100%;
+			background-repeat: no-repeat;
+			width: auto;
+			height: 30px;
+		}
+	</style>
+<?php }
+// add_action( 'login_enqueue_scripts', 'wordpress_login_styling' );
+
+
+// Removing menu pages
+function remove_menus(){
+	remove_menu_page( 'edit.php' );
+	remove_menu_page( 'edit-comments.php' );
+}
+// add_action( 'admin_menu', 'remove_menus' );
+
+
 /*
 ** dynamic submenu
 */
@@ -156,27 +217,6 @@ register_nav_menus(array(
 // 	}
 
 // }
-
-
-// options page
-if (function_exists('acf_add_options_page')) {
-	acf_add_options_page();
-}
-
-
-// GF: add support to hide field labels
-add_filter('gform_enable_field_label_visibility_settings', '__return_true');
-// GF: Disable Automatic Scrolling On All Forms
-add_filter( 'gform_confirmation_anchor', '__return_false' );
-
-
-
-// Removing menu pages
-// function remove_menus(){
-// 	remove_menu_page( 'edit.php' );
-// 	remove_menu_page( 'edit-comments.php' );
-// }
-// add_action( 'admin_menu', 'remove_menus' );
 
 
 /*
@@ -280,45 +320,7 @@ if( function_exists('acf_register_block_type') ) {
 
 
 
-/*
-** customize login screen
-*/
-function wordpress_login_styling() {
-	?>
-	<style type="text/css">
-		.login {
-			background-color: #fff;
-		}
 
-		.login #login h1 a {
-			background-image: url('<?php //the_field('opt_colored_logo', 'option'); ?>');
-			background-position: center;
-			background-size: auto 100%;
-			background-repeat: no-repeat;
-			width: auto;
-			height: 52px;
-		}
-
-		body.login #backtoblog a,
-		body.login #nav a {
-			color: #fff;
-		}
-
-		.login.login-password-protected {
-			background-color: #f1f1f1;
-		}
-
-		.login.login-password-protected #login h1 a {
-			background-image: url('<?php echo get_stylesheet_directory_uri() . '/images/rt-logo.png'; ?>');
-			background-position: center;
-			background-size: auto 100%;
-			background-repeat: no-repeat;
-			width: auto;
-			height: 30px;
-		}
-	</style>
-<?php }
-// add_action( 'login_enqueue_scripts', 'wordpress_login_styling' );
 
 
 
