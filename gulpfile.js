@@ -13,10 +13,10 @@ let autoprefixer  = require('gulp-autoprefixer');
 ** default task
 */
 gulp.task('default', function() {
-    gulp.watch('./css/scss/**/*.scss', gulp.series(
+    gulp.watch(['./blocks/**/*.scss', './css/scss/**/*.scss'], gulp.series(
         'css',
     ));
-    gulp.watch(['./js/assets/**/*.js', '!./js/assets/theme.js'], gulp.series(
+    gulp.watch(['./blocks/**/*.js', './js/assets/**/*.js', '!./js/assets/theme.js'], gulp.series(
         'js:concat', 
         'js:minify',
     ));
@@ -27,7 +27,13 @@ gulp.task('default', function() {
 ** convert scss to css, concatenate and minify
 */
 gulp.task('css', function () {
-  return gulp.src(['./css/scss/plugins/**/*.{css,scss}', './css/scss/*.scss'])
+  return gulp.src(
+      [
+          './css/scss/plugins/**/*.{css,scss}',
+          './css/scss/*.scss',
+          './blocks/**/*.scss',
+      ]
+  )
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(concat('theme.min.css'))
     .pipe(autoprefixer({
@@ -43,7 +49,14 @@ gulp.task('css', function () {
 ** concatenate js
 */
 gulp.task('js:concat', function () {
-  return gulp.src(['./js/assets/plugins/*.js', './js/assets/*.js', './js/assets/parts/*.js', '!./js/assets/theme.js'])
+  return gulp.src(
+      [
+          './js/assets/plugins/*.js',
+          './js/assets/main.js',
+          './js/assets/parts/*.js',
+          './blocks/**/*.js'
+      ]
+  )
     .pipe(concat('theme.js'))
     .pipe(gulp.dest('./js/assets'));
 });
@@ -62,6 +75,3 @@ gulp.task('js:minify', function () {
     }))
     .pipe(gulp.dest('./js'));
 });
-
-
-

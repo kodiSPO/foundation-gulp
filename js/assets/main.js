@@ -58,9 +58,3 @@
 // }
 // loadVacanciesOnScroll(); $(window).scroll(function() { loadVacanciesOnScroll(); });
 
-
-
-
-
-
-
